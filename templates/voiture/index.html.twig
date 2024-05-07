@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block body %}
+    <h1>Table <span class="fw-semi-bold">Voiture</span></h1>
+
+    <div class="col-md-12">
+        <section class="widget">
+            <header>
+                <div class="widget-controls">
+                    <a href="{{ path('voiture_new') }}" class="btn  btn-lg btn-primary"><i class="glyphicon glyphicon-plus"></i> Nouvelle voiture</a>
+                </div>
+            </header>
+            <div class="body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Matricule</th>
+                        <th>Description</th>
+                        <th>Photo</th>
+                        <th>Prix</th>
+                        <th>Modele</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for voiture in voitures %}
+                        <tr>
+                            <td>{{ voiture.id }}</td>
+                            <td>{{ voiture.nom }}</td>
+                            <td>{{ voiture.matricule }}</td>
+                            <td>{{ voiture.description }}</td>
+                            <td>{{ voiture.photo }}</td>
+                            <td>{{ voiture.prix }}</td>
+                            <td>{{ voiture.modele }}</td>
+                            <td>
+                                <a class="btn btn-lg btn-success" href="{{ path('voiture_show', {'id': voiture.id}) }}">Détail</a>
+                                <a class="btn btn-lg btn-warning"  href="{{ path('voiture_edit', {'id': voiture.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucune voiture</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

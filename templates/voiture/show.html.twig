@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'une voiture{% endblock %}
+
+{% block body %}
+    <h1>Détail d'une voiture</h1>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <section class="widget">
+                <header>
+                    <div class="widget-controls">
+                        <a href="{{ path('voiture_index') }}" class="btn  btn-lg btn-secondary">Retour</a>
+                        <a href="{{ path('voiture_edit', {'id': voiture.id}) }}" class="btn  btn-lg btn-warning">Modifier</a>
+                        {{ include('voiture/_delete_form.html.twig') }}
+                    </div>
+                </header>
+                <div class="body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ voiture.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ voiture.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Matricule</th>
+                            <td>{{ voiture.matricule }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ voiture.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Photo</th>
+                            <td>{{ voiture.photo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prix</th>
+                            <td>{{ voiture.prix }}</td>
+                        </tr>
+                        <tr>
+                            <th>Modele</th>
+                            <td>{{ voiture.modele }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

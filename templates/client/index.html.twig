@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+
+    <h1>Table <span class="fw-semi-bold">Client</span></h1>
+
+    <div class="col-md-12">
+        <section class="widget">
+            <header>
+                <div class="widget-controls">
+                    <a href="{{ path('client_new') }}" class="btn  btn-lg btn-primary"><i class="glyphicon glyphicon-plus"></i> Nouveau client</a>
+                </div>
+            </header>
+            <div class="body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Tel</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.id }}</td>
+                            <td>{{ client.nom }}</td>
+                            <td>{{ client.prenom }}</td>
+                            <td>{{ client.tel }}</td>
+                            <td>{{ client.email }}</td>
+                            <td>{{ client.adresse }}</td>
+                            <td>
+                                <a class="btn btn-lg btn-success"  href="{{ path('client_show', {'id': client.id}) }}">Détail</a>
+                                <a class="btn btn-lg btn-warning"  href="{{ path('client_edit', {'id': client.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Aucun client</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
